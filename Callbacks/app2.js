@@ -1,7 +1,7 @@
 const request = require('request');
 const yargs = require('yargs');
 
-const argv =  yargs.option({
+const argv = yargs.option({
     a: {
         demand: true,
         alias: 'address',
@@ -9,13 +9,13 @@ const argv =  yargs.option({
         string: true
     }
 })
-.help()
-.alias('help','h')
-.argv;
+    .help()
+    .alias('help', 'h')
+    .argv;
 
 //console.log(argv);
 //Como correr esta aplicacion "node app2.js -a '750 Calle 13 de Septiembre Colima 28987'"
-let encodeaddress=encodeURIComponent(argv.address);
+let encodeaddress = encodeURIComponent(argv.address);
 request({
     url: `http://maps.googleapis.com/maps/api/geocode/json?address= ${encodeaddress}`, //${encodeURIComponent(argv.address)}`,
     json: true
