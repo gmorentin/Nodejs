@@ -14,30 +14,30 @@ const argv = yargs.option({
     .alias('help', 'h')
     .argv;
 
-    /*weather.getWeather(19.2684656,-103.7506397, (errorMessage, weatherResults) => {
-        if (errorMessage) {
-            console.log(errorMessage);
-        } else {
-            console.log(JSON.stringify(weatherResults.temperature, undefined, 2));
-            console.log(JSON.stringify(weatherResults.apparentTemperature, undefined, 2));
-        }
-    });*/
+/*weather.getWeather(19.2684656,-103.7506397, (errorMessage, weatherResults) => {
+    if (errorMessage) {
+        console.log(errorMessage);
+    } else {
+        console.log(JSON.stringify(weatherResults.temperature, undefined, 2));
+        console.log(JSON.stringify(weatherResults.apparentTemperature, undefined, 2));
+    }
+});*/
 
 geocode.geocodeAddress(argv.address, (errorMessage, results) => {
     if (errorMessage) {
         console.log(errorMessage);
     } else {
         //console.log(JSON.stringify(results, undefined, 2));
-        weather.getWeather(results.latitude,results.logitude, (errorMessage, weatherResults) => {
+        console.log(`Dirección: ${results.address}`)
+        weather.getWeather(results.latitude, results.longitude, (errorMessage, weatherResults) => {
             if (errorMessage) {
                 console.log(errorMessage);
             } else {
-                console.log(`Dirección: ${results.address}`)
-                console.log(`Temperatura: ${weatherResults.temperature}`);
-                console.log(`Sensación Térmica: ${weatherResults.apparentTemperature}`);
+                console.log(`Temperatura: ${weatherResults.temperature} ºC`);
+                console.log(`Sensación Térmica: ${weatherResults.apparentTemperature} ºF`);
             }
         });
-    
+
     }
 })
 

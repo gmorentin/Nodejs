@@ -16,7 +16,7 @@ var geocodeAddress = (address, callback) => {
             callback(undefined, {
                 address: body.results[0].formatted_address,
                 latitude: body.results[0].geometry.location.lat,
-                logitude: body.results[0].geometry.location.lng
+                longitude: body.results[0].geometry.location.lng
             })
             /*console.log(`Address: ${body.results[0].formatted_address}`);
             console.log(`Latitud: ${body.results[0].geometry.location.lat}`);
