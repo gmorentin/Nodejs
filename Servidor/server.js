@@ -15,6 +15,11 @@ let http = require('http');
 let fs = require('fs');
 
 http.createServer(function(req,res){
-    res.writeHead(200,{'Content-Type': 'text/html'});
-    fs.createReadStream(__dirname + '/index.html').pipe(res); 
+    res.writeHead(200,{'Content-Type': 'application/json'/*'text/html'*/});
+    let obj={
+        firstname: 'Gustavo',
+        lastname: 'Morentin'
+    };
+    res.end(JSON.stringify(obj));
+    //fs.createReadStream(__dirname + '/index.html').pipe(res); 
 }).listen(6553,'127.0.0.1');
